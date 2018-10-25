@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <script src="http://localhost:8060/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" , type="text/css" href="style.css" />
+    <script>
+        function a(file) {
+            const socket = io.connect("http://localhost:8060");
+            var fileReader = new FileReader(),
+                slice = file.slice(0, 100000);
+            fileReader.readAsArrayBuffer(slice);
+            fileReader.onload = (evt) => {
+                var arrayBuffer = fileReader.result;
+                socket.emit('img-chunk', { arrayBuffer: arrayBuffer, name: file.name });
+            }
+        }
+    </script>
+    <script src="./upload.js"></script>
+</head>
+<body>
+    <img id="output" src="" />
+    <br> Select a file:
+    <input type="file" name="myFile" id="myFile">
+    <br>
+    <img id="output" src="" />
+    <button type="submit" onclick="a(myFile.files[0])" action="">submit</button>
+</body>
+</html>

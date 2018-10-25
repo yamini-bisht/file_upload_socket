@@ -1,0 +1,13 @@
+style.css
+body{
+    font-family: 'Nunito';
+}
+
+#output{
+max-width: 1080px;
+margin:30px auto;
+border:1 px solid #ddd;
+box-shadow: 1px 3px 5px rgba(0, 0, 0.05);
+border-radius: 2px
+
+}
